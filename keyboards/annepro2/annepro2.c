@@ -54,6 +54,9 @@ void OVERRIDE keyboard_pre_init_kb(void) {
 void OVERRIDE keyboard_post_init_kb(void) {
     // Start LED UART
     sdStart(&SD0, &ledUartInitConfig);
+    /* Let the LED chip settle a bit before switching the mode.
+     * That helped at least one person. */
+    wait_ms(15);
     sdWrite(&SD0, ledMcuWakeup, 11);
 
     // wait to receive response from wakeup
