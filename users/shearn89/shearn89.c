@@ -20,10 +20,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-__attribute__((weak)) void keyboard_post_init_user(void) {}
 __attribute__((weak)) void suspend_power_down_user(void) {}
 __attribute__((weak)) void matrix_init_user(void) { }
 __attribute__((weak)) void matrix_scan_user(void) { }
+
+
+__attribute__((weak)) void keyboard_post_init_user(void) {
+  rgb_matrix_mode(RGB_MATRIX_HUE_WAVE);
+}
 
 // layer stuff not working on dz60
 layer_state_t layer_state_set_user(layer_state_t layer) {
