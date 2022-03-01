@@ -25,29 +25,28 @@ __attribute__((weak)) void suspend_power_down_user(void) {}
 __attribute__((weak)) void matrix_init_user(void) { }
 __attribute__((weak)) void matrix_scan_user(void) { }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    switch(biton32(state)) {
+// layer stuff not working on dz60
+layer_state_t layer_state_set_user(layer_state_t layer) {
+    switch(get_highest_layer(layer)) {
     case _QWERTY:
         // rgb_matrix_mode(RGB_MATRIX_HUE_WAVE);
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-        rgb_matrix_set_color_all(RGB_GOLDENROD);
+        // rgb_matrix_set_color_all(RGB_GOLDENROD);
         break;
     case _WORKMAN:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-        rgb_matrix_set_color_all(RGB_GOLD);
+        // rgb_matrix_set_color_all(RGB_GOLD);
         break;
     case _FN1_LAYER:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-        rgb_matrix_set_color_all(RGB_GREEN);
+        // rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+        // rgb_matrix_set_color_all(RGB_GREEN);
         break;
     case _FN2_LAYER:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-        rgb_matrix_set_color_all(RGB_CYAN);
+        // rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+        // rgb_matrix_set_color_all(RGB_CYAN);
         break;
     default: //  for any other layers, or the default layer
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-        rgb_matrix_set_color_all(RGB_WHITE);
+        // rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
+        // rgb_matrix_set_color_all(RGB_WHITE);
         break;
     }
-  return state;
+    return layer;
 }

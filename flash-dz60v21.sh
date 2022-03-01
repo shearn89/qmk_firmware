@@ -6,4 +6,6 @@ sleep 10
 echo "continuing"
 rm /Volumes/KBDFANS\ \ /FLASH.BIN
 cp dztech_dz60rgb_ansi_v2_1_shearn89.bin /Volumes/KBDFANS\ \ /FLASH.bin
-echo "complete"
+echo "complete, ejecting"
+diskutil eject "/Volumes/KBDFANS  "
+echo "done"
