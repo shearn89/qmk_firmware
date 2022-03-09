@@ -29,28 +29,30 @@ __attribute__((weak)) void keyboard_post_init_user(void) {
   rgb_matrix_mode(RGB_MATRIX_HUE_WAVE);
 }
 
-// layer stuff not working on dz60
-layer_state_t layer_state_set_user(layer_state_t layer) {
+
+// matrix effects are done with HSV, so set HSV colors
+__attribute__((weak)) layer_state_t layer_state_set_user(layer_state_t layer) {
     switch(get_highest_layer(layer)) {
     case _QWERTY:
-        // rgb_matrix_mode(RGB_MATRIX_HUE_WAVE);
-        // rgb_matrix_set_color_all(RGB_GOLDENROD);
+        rgb_matrix_sethsv_noeeprom(HSV_GOLDENROD);
         break;
     case _WORKMAN:
-        // rgb_matrix_set_color_all(RGB_GOLD);
+        rgb_matrix_sethsv_noeeprom(HSV_GOLD);
         break;
     case _FN1_LAYER:
-        // rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-        // rgb_matrix_set_color_all(RGB_GREEN);
+        rgb_matrix_sethsv_noeeprom(HSV_GREEN);
         break;
     case _FN2_LAYER:
-        // rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-        // rgb_matrix_set_color_all(RGB_CYAN);
+        rgb_matrix_sethsv_noeeprom(HSV_CYAN);
         break;
     default: //  for any other layers, or the default layer
-        // rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
-        // rgb_matrix_set_color_all(RGB_WHITE);
+        rgb_matrix_sethsv_noeeprom(HSV_WHITE);
         break;
     }
     return layer;
 }
+
+
+// use this to do clever stuff with indicators or specific keys.
+// https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgb_matrix.md#indicators
+__attribute__((weak)) void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) { }
