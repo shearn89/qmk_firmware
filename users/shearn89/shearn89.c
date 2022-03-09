@@ -34,19 +34,18 @@ __attribute__((weak)) void keyboard_post_init_user(void) {
 __attribute__((weak)) layer_state_t layer_state_set_user(layer_state_t layer) {
     switch(get_highest_layer(layer)) {
     case _QWERTY:
-        rgb_matrix_sethsv_noeeprom(HSV_GOLDENROD);
+        rgb_matrix_sethsv_noeeprom(HSV_RED);
         break;
     case _WORKMAN:
-        rgb_matrix_sethsv_noeeprom(HSV_GOLD);
+        rgb_matrix_sethsv_noeeprom(HSV_ORANGE);
         break;
     case _FN1_LAYER:
         rgb_matrix_sethsv_noeeprom(HSV_GREEN);
         break;
     case _FN2_LAYER:
-        rgb_matrix_sethsv_noeeprom(HSV_CYAN);
+        rgb_matrix_sethsv_noeeprom(HSV_BLUE);
         break;
     default: //  for any other layers, or the default layer
-        rgb_matrix_sethsv_noeeprom(HSV_WHITE);
         break;
     }
     return layer;
