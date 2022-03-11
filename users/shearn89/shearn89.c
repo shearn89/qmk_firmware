@@ -36,20 +36,16 @@ __attribute__((weak)) void keyboard_post_init_user(void) {
 // matrix effects are done with HSV, so set HSV colors
 __attribute__((weak)) layer_state_t layer_state_set_user(layer_state_t layer) {
     switch(get_highest_layer(layer)) {
-    case _QWERTY:
-        rgb_matrix_sethsv_noeeprom(142, 255, 255); //bluish
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
-        break;
-    case _WORKMAN:
-        rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v); // red?
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
-        break;
     case _FN1_LAYER:
         rgb_matrix_sethsv_noeeprom(HSV_WHITE);
         rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
         break;
     case _FN2_LAYER:
         rgb_matrix_sethsv_noeeprom(HSV_GREEN);
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
+        break;
+    default:
+        rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v); // red?
         rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
         break;
     }
