@@ -6,16 +6,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
+	rgb_matrix_sethsv(HSV_BLUE);
         set_single_persistent_default_layer(_QWERTY);
       }
       return false;
     case WORKMAN:
       if (record->event.pressed) {
+	rgb_matrix_sethsv(HSV_TEAL);
         set_single_persistent_default_layer(_WORKMAN);
       }
       return false;
     case CLMAKDH:
       if (record->event.pressed) {
+	rgb_matrix_sethsv(HSV_ORANGE);
         set_single_persistent_default_layer(_CLMAKDH);
       }
       return false;
@@ -33,7 +36,8 @@ __attribute__((weak)) void matrix_scan_user(void) { }
 HSV hsv;
 
 __attribute__((weak)) void keyboard_post_init_user(void) {
-  rgb_matrix_mode(RGB_MATRIX_HUE_WAVE);
+  // rgb_matrix_mode(RGB_MATRIX_HUE_WAVE);
+  rgb_matrix_mode(RGB_MATRIX_HUE_PENDULUM);
   // rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
   hsv = rgb_matrix_get_hsv();
 }
@@ -43,15 +47,15 @@ __attribute__((weak)) layer_state_t layer_state_set_user(layer_state_t layer) {
     switch(get_highest_layer(layer)) {
     case _FN1_LAYER:
         rgb_matrix_sethsv_noeeprom(HSV_WHITE);
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_PIXEL_FLOW);
         break;
     case _FN2_LAYER:
         rgb_matrix_sethsv_noeeprom(HSV_GREEN);
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_PIXEL_FLOW);
         break;
     default:
-        rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v); // red?
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_WAVE);
+        rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v); // reset
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_HUE_PENDULUM);
         break;
     }
     return layer;
