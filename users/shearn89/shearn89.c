@@ -52,6 +52,10 @@ __attribute__((weak)) void keyboard_post_init_user(void) {
 // matrix effects are done with HSV, so set HSV colors
 __attribute__((weak)) layer_state_t layer_state_set_user(layer_state_t layer) {
     switch(get_highest_layer(layer)) {
+    case _QWERTY:
+      autoshift_disable();
+    case _CLMAKDH:
+      autoshift_enable();
     case _FN1_LAYER:
 	rgb_matrix_mode_noeeprom(RGB_MATRIX_BREATHING);
 	rgb_matrix_set_speed(modSpeed);
