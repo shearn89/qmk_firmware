@@ -9,7 +9,7 @@ on:
     - 'user-shearn89'
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
 
