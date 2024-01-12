@@ -14,12 +14,11 @@ jobs:
     container: ghcr.io/qmk/qmk_cli
 
     steps:
-    - name: Disable safe.directory check
-      run : git config --global --add safe.directory '*'
-
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0
+        fetch-depth: 1
+        submodules: 'true'
+        set-safe-directory: 'true'
 
     - name: Run QMK
       run: qmk compile -kb dztech/dz60rgb_ansi/v2_1 -km shearn89
