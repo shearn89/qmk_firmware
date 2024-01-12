@@ -20,6 +20,9 @@ jobs:
         submodules: 'true'
         set-safe-directory: 'true'
 
+    - name: Setup QMK
+      run: qmk setup -y
+
     - name: Run QMK
       run: qmk compile -kb dztech/dz60rgb_ansi/v2_1 -km shearn89
 
