@@ -25,7 +25,7 @@ jobs:
       run: qmk compile -kb dztech/dz60rgb_ansi/v2_1 -km shearn89
 
     - name: Archive firmware
-        uses: actions/upload-artifact@v4
-        with:
-          name: FLASH.bin
-          path: dztech_dz60rgb_ansi_v2_1_shearn89.bin
+      uses: actions/upload-artifact@v4
+      with:
+        name: FLASH.bin
+        path: dztech_dz60rgb_ansi_v2_1_shearn89.bin
