@@ -9,6 +9,7 @@
 enum user_keycodes {
   QWERTY = SAFE_RANGE,
   CLMAKDH,
+  FN2_LAYER,
 };
 
 enum user_layers {

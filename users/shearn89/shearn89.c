@@ -36,6 +36,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	set_single_persistent_default_layer(_CLMAKDH);
       }
       return false;
+    case FN2_LAYER:
+      if (record->event.pressed) {
+        rgb_matrix_sethsv(0, 255, brightness); // red
+        rgb_matrix_set_speed(127);
+        rgb_matrix_mode(RGB_MATRIX_BREATHING);
+
+	lastSpeed = 127;
+	lastMode = RGB_MATRIX_BREATHING;
+	hsv = rgb_matrix_get_hsv();
+
+      	autoshift_disable();
+	set_single_persistent_default_layer(_FN2_LAYER);
+      }
+      return false;
     default:
       return true;
   }
